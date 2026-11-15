@@ -1020,3 +1020,48 @@ section[id] { scroll-margin-top: 95px; }
 @media(max-width:900px) { .product-feature { grid-template-columns:1fr; } .product-visual { max-height:320px; min-height:0; } }
 @media(max-width:640px) { .products { padding:60px 0; } .product-copy { padding:28px 24px; } .product-copy h3 { font-size:30px; } .company-pillars { justify-content:center; } .product-actions { gap:18px; } }
 @media(max-width:640px) { .navbar .logo { font-size:19px; white-space:nowrap; } .nav-actions { gap:12px; } .navbar .container { gap:12px; } .lang-btn { padding:6px 10px; } }
+
+/* Keep the headline and carousel together within the first desktop viewport. */
+@media (min-width:901px) {
+    #home.hero { min-height:100svh; padding:96px 0 16px; }
+    #home > .container { display:grid; gap:16px; }
+    #home .hero-content { max-width:none; margin:0; padding:0; }
+    #home .hero-badge { padding:6px 16px; font-size:12px; margin-bottom:10px; }
+    #home .hero-title { font-size:clamp(32px,3.2vw,48px); line-height:1.1; }
+    #home .hero-title br { display:none; }
+    #home .hero-title > span:first-child { margin-right:.2em; }
+    #home .product-copy { padding:24px 28px; }
+    #home .product-logo { width:100px; margin-bottom:12px; }
+    #home .watch-wordmark { font-size:28px; margin-bottom:12px; }
+    #home .product-kicker { font-size:11px; }
+    #home .product-copy h3 { font-size:clamp(26px,2.3vw,34px); margin:12px 0; }
+    #home .product-copy p { font-size:14px; line-height:1.55; margin-bottom:14px; }
+    #home .product-copy .product-ownership { display:none; }
+    #home .product-actions .btn { padding:12px 24px; font-size:14px; }
+    #home .product-start { font-size:13px; }
+    #home .product-visual { min-height:0; }
+    #home .watch-visual { min-height:0; padding:24px; }
+    #home .watch-question { font-size:130px; }
+    #home .watch-visual-title { font-size:30px; }
+    #home .product-slider-controls { margin-top:12px; }
+}
+@media (max-width:900px) {
+    #home.hero { padding-top:96px; }
+    #home .hero-content { padding:0 0 20px; }
+    #home .hero-badge { margin-bottom:14px; font-size:11px; padding:6px 12px; }
+    #home .hero-title { font-size:clamp(28px,5vw,40px); }
+}
+@media (max-width:640px) {
+    #home .product-copy { padding:20px; }
+    #home .product-logo { width:100px; margin-bottom:12px; }
+    #home .watch-wordmark { font-size:28px; margin-bottom:12px; }
+    #home .product-copy h3 { font-size:24px; margin:12px 0; }
+    #home .product-copy p { font-size:14px; line-height:1.55; margin-bottom:14px; }
+    #home .product-copy .product-ownership,
+    #home .product-visual,
+    #home .watch-visual { display:none; }
+    #home .product-actions { gap:12px; }
+    #home .product-actions .btn { padding:12px 20px; font-size:14px; }
+    #home .product-start { font-size:13px; }
+    #home .product-slider-controls { margin-top:12px; }
+}
