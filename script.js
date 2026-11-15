@@ -26,6 +26,8 @@ function switchLanguage(lang) {
         }
     });
 
+    document.querySelectorAll("[data-href-en]").forEach(el => { el.href = el.getAttribute(`data-href-${lang}`); });
+
     // Update HTML lang attribute
     document.documentElement.lang = lang;
 }
@@ -76,6 +78,7 @@ const navMenu = document.querySelector('.nav-menu');
 mobileMenuToggle.addEventListener('click', () => {
     const isActive = navMenu.classList.toggle('active');
     mobileMenuToggle.classList.toggle('active');
+    mobileMenuToggle.setAttribute('aria-expanded', String(isActive));
     document.body.style.overflow = isActive ? 'hidden' : '';
 });
 
@@ -84,6 +87,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
         mobileMenuToggle.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
     });
 });
@@ -110,61 +114,6 @@ document.querySelectorAll('.expertise-card, .portfolio-card, .service-card, .par
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
-
-// Form Submission
-const contactForm = document.querySelector('.contact-form');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-
-    // Here you would typically send the data to a backend
-    // For now, we'll just show a success message
-    alert(currentLang === 'en'
-        ? 'Thank you for your message! We will get back to you soon.'
-        : 'Mesajınız için teşekkürler! En kısa sürede size geri döneceğiz.');
-
-    contactForm.reset();
-});
-
-// Animated Counter for Stats
-function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 16);
-    const isDecimal = target.toString().includes('.');
-
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target + (target >= 10 ? '+' : '');
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current) + (target >= 10 ? '+' : '');
-        }
-    }, 16);
-}
-
-// Trigger counter animation when stats are visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const target = parseInt(stat.textContent);
-                animateCounter(stat, target);
-            });
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-    statsObserver.observe(heroStats);
-}
 
 // Parallax Effect for Hero Background
 window.addEventListener('scroll', () => {
