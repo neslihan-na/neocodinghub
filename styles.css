@@ -1065,3 +1065,11 @@ section[id] { scroll-margin-top: 95px; }
     #home .product-start { font-size:13px; }
     #home .product-slider-controls { margin-top:12px; }
 }
+.slider-autoplay { font-size:16px; }
+@media (max-width:640px) {
+    #home .product-slider-controls { gap:8px; }
+    #home .slider-arrow { width:32px; height:36px; flex:0 0 32px; font-size:18px; }
+    #home .slider-autoplay { font-size:14px; }
+    #home .slider-tab { padding:9px; font-size:12px; }
+    #home .slider-tabs { gap:4px; }
+}

@@ -33,6 +33,7 @@ function switchLanguage(lang) {
     document.querySelectorAll('[data-aria-en]').forEach(element => {
         element.setAttribute('aria-label', element.getAttribute(`data-aria-${lang}`));
     });
+    updateAutoplayLabel();
 }
 
 langButtons.forEach(btn => {
@@ -65,6 +66,7 @@ function showProduct(index) {
         behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
     });
     updateProduct(next);
+    scheduleProductRotation();
 }
 
 productTabs.forEach(tab => tab.addEventListener('click', () => showProduct(Number(tab.dataset.slide))));
@@ -83,12 +85,69 @@ productTrack.addEventListener('scroll', () => {
     productScrollTimer = setTimeout(() => {
         const index = Math.max(0, Math.min(productSlides.length - 1, Math.round(productTrack.scrollLeft / productTrack.clientWidth)));
         updateProduct(index);
+        scheduleProductRotation();
     }, 120);
 }, { passive: true });
 window.addEventListener('resize', () => {
     productTrack.scrollTo({ left: activeProduct * productTrack.clientWidth, behavior: 'instant' });
 });
 updateProduct(0);
+
+const productSlider = document.querySelector('.product-slider');
+const autoplayButton = document.querySelector('.slider-autoplay');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let autoplayEnabled = !reducedMotion.matches;
+let productHovered = false;
+let productFocused = false;
+let productTouched = false;
+let productVisible = true;
+let productRotationTimer;
+
+function updateAutoplayLabel() {
+    autoplayButton.textContent = autoplayEnabled ? '⏸' : '▶';
+    autoplayButton.setAttribute('aria-label', currentLang === 'tr'
+        ? (autoplayEnabled ? 'Otomatik geçişi durdur' : 'Otomatik geçişi başlat')
+        : (autoplayEnabled ? 'Pause automatic slides' : 'Start automatic slides'));
+}
+
+function scheduleProductRotation() {
+    clearTimeout(productRotationTimer);
+    const rotating = autoplayEnabled && !productHovered && !productFocused && !productTouched
+        && productVisible && !document.hidden;
+    productStatus.setAttribute('aria-live', rotating ? 'off' : 'polite');
+    if (rotating) productRotationTimer = setTimeout(() => showProduct(activeProduct + 1), 6000);
+}
+
+autoplayButton.addEventListener('click', () => {
+    autoplayEnabled = !autoplayEnabled;
+    updateAutoplayLabel();
+    scheduleProductRotation();
+});
+productSlider.addEventListener('mouseenter', () => { productHovered = true; scheduleProductRotation(); });
+productSlider.addEventListener('mouseleave', () => { productHovered = false; scheduleProductRotation(); });
+productSlider.addEventListener('focusin', event => {
+    productFocused = event.target !== autoplayButton;
+    scheduleProductRotation();
+});
+productSlider.addEventListener('focusout', event => {
+    productFocused = productSlider.contains(event.relatedTarget) && event.relatedTarget !== autoplayButton;
+    scheduleProductRotation();
+});
+productTrack.addEventListener('pointerdown', () => { productTouched = true; scheduleProductRotation(); });
+window.addEventListener('pointerup', () => { productTouched = false; scheduleProductRotation(); });
+window.addEventListener('pointercancel', () => { productTouched = false; scheduleProductRotation(); });
+document.addEventListener('visibilitychange', scheduleProductRotation);
+reducedMotion.addEventListener('change', event => {
+    if (event.matches) autoplayEnabled = false;
+    updateAutoplayLabel();
+    scheduleProductRotation();
+});
+new IntersectionObserver(entries => {
+    productVisible = entries[0].isIntersecting;
+    scheduleProductRotation();
+}, { threshold: 0.25 }).observe(productSlider);
+updateAutoplayLabel();
+scheduleProductRotation();
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
