@@ -30,6 +30,9 @@ function switchLanguage(lang) {
 
     // Update HTML lang attribute
     document.documentElement.lang = lang;
+    document.querySelectorAll('[data-aria-en]').forEach(element => {
+        element.setAttribute('aria-label', element.getAttribute(`data-aria-${lang}`));
+    });
 }
 
 langButtons.forEach(btn => {
@@ -37,6 +40,55 @@ langButtons.forEach(btn => {
         switchLanguage(btn.dataset.lang);
     });
 });
+
+// Product carousel: manual controls, keyboard navigation and native touch swipe.
+const productTrack = document.querySelector('.product-track');
+const productSlides = [...productTrack.querySelectorAll('.product-feature')];
+const productTabs = [...document.querySelectorAll('[data-slide]')];
+const productStatus = document.querySelector('.slider-status');
+let activeProduct = 0;
+
+function updateProduct(index) {
+    activeProduct = index;
+    productTabs.forEach((tab, i) => {
+        if (i === index) tab.setAttribute('aria-current', 'true');
+        else tab.removeAttribute('aria-current');
+    });
+    productSlides.forEach((slide, i) => { slide.inert = i !== index; });
+    productStatus.textContent = `${index + 1} / ${productSlides.length} · ${productSlides[index].getAttribute('aria-label')}`;
+}
+
+function showProduct(index) {
+    const next = (index + productSlides.length) % productSlides.length;
+    productTrack.scrollTo({
+        left: productSlides[next].offsetLeft - productSlides[0].offsetLeft,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+    });
+    updateProduct(next);
+}
+
+productTabs.forEach(tab => tab.addEventListener('click', () => showProduct(Number(tab.dataset.slide))));
+document.querySelectorAll('[data-slide-step]').forEach(button => {
+    button.addEventListener('click', () => showProduct(activeProduct + Number(button.dataset.slideStep)));
+});
+productTrack.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showProduct(activeProduct + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+});
+let productScrollTimer;
+productTrack.addEventListener('scroll', () => {
+    clearTimeout(productScrollTimer);
+    productScrollTimer = setTimeout(() => {
+        const index = Math.max(0, Math.min(productSlides.length - 1, Math.round(productTrack.scrollLeft / productTrack.clientWidth)));
+        updateProduct(index);
+    }, 120);
+}, { passive: true });
+window.addEventListener('resize', () => {
+    productTrack.scrollTo({ left: activeProduct * productTrack.clientWidth, behavior: 'instant' });
+});
+updateProduct(0);
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

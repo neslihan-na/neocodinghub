@@ -51,33 +51,19 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge" data-en="AI products. Built for everyday life." data-tr="Günlük hayata dokunan yapay zekâ ürünleri.">AI products. Built for everyday life.</div>
-                <h1 class="hero-title"><span  data-en="Ideas become" data-tr="Fikirler,">Ideas become</span><br><span class="gradient-text" data-en="everyday products." data-tr="hayatın parçası olur.">everyday products.</span></h1>
-                <p class="hero-description" data-en="We build and operate our own digital products, starting with Wholy. We also help businesses turn ideas into useful AI, web and mobile experiences." data-tr="Wholy gibi kendi dijital ürünlerimizi geliştiriyor ve işletiyoruz. İşletmelerin fikirlerini de yapay zekâ, web ve mobil uygulamalarla hayata geçiriyoruz.">We build and operate our own digital products, starting with Wholy. We also help businesses turn ideas into useful AI, web and mobile experiences.</p>
-                <div class="hero-cta"><a href="#products" class="btn btn-primary" data-en="Explore our products" data-tr="Ürünlerimizi keşfet">Explore our products</a><a href="#contact" class="btn btn-secondary" data-en="Work with us" data-tr="Birlikte geliştirelim">Work with us</a></div><div class="company-pillars"><span  data-en="Our own products" data-tr="Kendi ürünlerimiz">Our own products</span><span  data-en="AI expertise" data-tr="Yapay zekâ uzmanlığı">AI expertise</span><span  data-en="Web &amp; mobile development" data-tr="Web ve mobil geliştirme">Web &amp; mobile development</span></div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <section id="products" class="products">
-      <div class="container">
-        <div class="section-header"><h2 class="section-title" data-en="Our products" data-tr="Ürünlerimiz">Our products</h2><p class="section-subtitle" data-en="Independent brands. One product company behind them." data-tr="Kendi kimliği olan markalar. Arkalarında aynı ürün şirketi.">Independent brands. One product company behind them.</p></div>
-        <article class="product-feature">
+    <section id="home" class="products products-home">
+      <div class="container" id="products">
+        <div class="section-header"><h1 class="section-title" data-en="Our products" data-tr="Ürünlerimiz">Our products</h1><p class="section-subtitle" data-en="Independent brands. One product company behind them." data-tr="Kendi kimliği olan markalar. Arkalarında aynı ürün şirketi.">Independent brands. One product company behind them.</p></div>
+        <div class="product-slider" role="region" aria-roledescription="carousel" aria-label="Our products" data-aria-en="Our products" data-aria-tr="Ürünlerimiz">
+        <div class="product-track" id="product-track" tabindex="0" aria-label="Product slides" data-aria-en="Product slides" data-aria-tr="Ürün slaytları">
+        <article class="product-feature" role="group" aria-label="Wholy">
           <div class="product-copy">
             <img class="product-logo" src="assets/wholy-logo.png" alt="Wholy" width="2105" height="747" loading="lazy">
             <p class="product-kicker" data-en="A NEO Coding Hub product · Available on WhatsApp" data-tr="Bir NEO Coding Hub ürünü · WhatsApp üzerinden erişilebilir">A NEO Coding Hub product · Available on WhatsApp</p><h3  data-en="Small steps. Healthier habits." data-tr="Küçük adımlar. Daha sağlıklı alışkanlıklar.">Small steps. Healthier habits.</h3><p  data-en="Wholy is an AI companion for tracking meals, water, movement and everyday habits on WhatsApp. A simple dashboard brings your progress together." data-tr="Wholy, WhatsApp üzerinden öğün, su, hareket ve günlük alışkanlık takibi sunan yapay zekâ destekli yol arkadaşın. Sade bir panel, gelişimini bir araya getirir.">Wholy is an AI companion for tracking meals, water, movement and everyday habits on WhatsApp. A simple dashboard brings your progress together.</p><p class="product-ownership" data-en="Wholy is developed and operated by NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ, under the NEO Coding Hub brand." data-tr="Wholy, NEO Coding Hub markası altında NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ tarafından geliştirilir ve işletilir.">Wholy is developed and operated by NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ, under the NEO Coding Hub brand.</p><div class="product-actions"><a class="btn btn-primary" href="https://wholy.neocodinghub.com/" data-en="Meet Wholy →" data-tr="Wholy ile tanış →">Meet Wholy →</a><a class="product-start" href="https://wholy.neocodinghub.com/progress/start?lang=en" data-href-en="https://wholy.neocodinghub.com/progress/start?lang=en" data-href-tr="https://wholy.neocodinghub.com/progress/start?lang=tr" data-en="Start on WhatsApp" data-tr="WhatsApp’ta başla">Start on WhatsApp</a></div>
           </div>
           <img class="product-visual" src="assets/wholy-hero.jpg" alt="" width="1536" height="1024" loading="lazy">
         </article>
-        <article class="product-feature product-watch">
+        <article class="product-feature product-watch" role="group" aria-label="whattowatch">
           <div class="product-copy">
             <div class="watch-wordmark">whattowatch<span aria-hidden="true">?</span></div>
             <p class="product-kicker" data-en="A NEO Coding Hub product · Film &amp; series discovery" data-tr="Bir NEO Coding Hub ürünü · Film ve dizi keşfi">A NEO Coding Hub product · Film &amp; series discovery</p>
@@ -94,7 +80,86 @@
             <span class="watch-visual-caption" data-en="Less searching. More watching." data-tr="Daha az arama. Daha çok sinema.">Less searching. More watching.</span>
           </div>
         </article>
+        </div>
+        <div class="product-slider-controls">
+          <button class="slider-arrow" type="button" data-slide-step="-1" aria-controls="product-track" aria-label="Previous product" data-aria-en="Previous product" data-aria-tr="Önceki ürün">←</button>
+          <div class="slider-tabs">
+            <button class="slider-tab" type="button" data-slide="0" aria-controls="product-track" aria-current="true">Wholy</button>
+            <button class="slider-tab" type="button" data-slide="1" aria-controls="product-track">whattowatch</button>
+          </div>
+          <button class="slider-arrow" type="button" data-slide-step="1" aria-controls="product-track" aria-label="Next product" data-aria-en="Next product" data-aria-tr="Sonraki ürün">→</button>
+        </div>
+        <span class="slider-status sr-only" aria-live="polite" aria-atomic="true"></span>
+        </div>
       </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="company-intro" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge" data-en="AI products. Built for everyday life." data-tr="Günlük hayata dokunan yapay zekâ ürünleri.">AI products. Built for everyday life.</div>
+                <h2 class="hero-title"><span  data-en="Ideas become" data-tr="Fikirler,">Ideas become</span><br><span class="gradient-text" data-en="everyday products." data-tr="hayatın parçası olur.">everyday products.</span></h2>
+                <p class="hero-description" data-en="We build and operate our own digital products, including Wholy and whattowatch. We also help businesses turn ideas into useful AI, web and mobile experiences." data-tr="Wholy ve whattowatch gibi kendi dijital ürünlerimizi geliştiriyor ve işletiyoruz. İşletmelerin fikirlerini de yapay zekâ, web ve mobil uygulamalarla hayata geçiriyoruz.">We build and operate our own digital products, including Wholy and whattowatch. We also help businesses turn ideas into useful AI, web and mobile experiences.</p>
+                <div class="hero-cta"><a href="#products" class="btn btn-primary" data-en="Explore our products" data-tr="Ürünlerimizi keşfet">Explore our products</a><a href="#contact" class="btn btn-secondary" data-en="Work with us" data-tr="Birlikte geliştirelim">Work with us</a></div><div class="company-pillars"><span  data-en="Our own products" data-tr="Kendi ürünlerimiz">Our own products</span><span  data-en="AI expertise" data-tr="Yapay zekâ uzmanlığı">AI expertise</span><span  data-en="Web &amp; mobile development" data-tr="Web ve mobil geliştirme">Web &amp; mobile development</span></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="The company behind the products" data-tr="Ürünlerin arkasındaki şirket">The company behind the products</h2>
+                <p class="section-subtitle" data-en="Innovation-driven consulting with proven expertise"
+                    data-tr="Kanıtlanmış uzmanlıkla yenilikçi danışmanlık">Innovation-driven consulting with proven
+                    expertise</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p  data-en="NEO Coding Hub is the product and technology brand of NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ. We develop and operate digital products, including Wholy and whattowatch, and provide AI consulting, web and mobile development services." data-tr="NEO Coding Hub, NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ’nin ürün ve teknoloji markasıdır. Wholy ve whattowatch dahil dijital ürünler geliştirip işletir; yapay zekâ danışmanlığı, web ve mobil uygulama geliştirme hizmetleri sunar.">NEO Coding Hub is the product and technology brand of NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ. We develop and operate digital products, including Wholy and whattowatch, and provide AI consulting, web and mobile development services.</p>
+                    <p data-en="With successful partnerships including TÜBİTAK-funded projects with Glov, we've demonstrated our capability to tackle complex challenges in artificial intelligence and deliver innovative solutions that drive business growth."
+                        data-tr="Glov ile TÜBİTAK destekli projeler dahil olmak üzere başarılı ortaklıklarımızla, yapay zeka alanındaki karmaşık zorlukların üstesinden gelme ve iş büyümesini sağlayan yenilikçi çözümler sunma yeteneğimizi kanıtladık.">
+                        With successful partnerships including TÜBİTAK-funded projects with Glov, we've demonstrated our
+                        capability to tackle complex challenges in artificial intelligence and deliver innovative
+                        solutions that drive business growth.
+                    </p>
+                </div>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-icon">🤖</div>
+                        <h3 data-en="Artificial Intelligence" data-tr="Yapay Zeka">Artificial Intelligence</h3>
+                        <p data-en="Advanced AI solutions for complex problems"
+                            data-tr="Karmaşık problemler için gelişmiş AI çözümleri">Advanced AI solutions for complex
+                            problems</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">📊</div>
+                        <h3 data-en="Machine Learning" data-tr="Makine Öğrenimi">Machine Learning</h3>
+                        <p data-en="Data-driven insights and predictive models"
+                            data-tr="Veri odaklı içgörüler ve tahmin modelleri">Data-driven insights and predictive
+                            models</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">📱</div>
+                        <h3 data-en="Mobile Development" data-tr="Mobil Geliştirme">Mobile Development</h3>
+                        <p data-en="Cross-platform apps with native performance"
+                            data-tr="Yerel performanslı çapraz platform uygulamaları">Cross-platform apps with native
+                            performance</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">💡</div>
+                        <h3 data-en="Innovation Consulting" data-tr="İnovasyon Danışmanlığı">Innovation Consulting</h3>
+                        <p data-en="Strategic guidance for digital transformation"
+                            data-tr="Dijital dönüşüm için stratejik rehberlik">Strategic guidance for digital
+                            transformation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Portfolio Section -->
@@ -232,57 +297,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-en="The company behind the products" data-tr="Ürünlerin arkasındaki şirket">The company behind the products</h2>
-                <p class="section-subtitle" data-en="Innovation-driven consulting with proven expertise"
-                    data-tr="Kanıtlanmış uzmanlıkla yenilikçi danışmanlık">Innovation-driven consulting with proven
-                    expertise</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p  data-en="NEO Coding Hub is the product and technology brand of NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ. We develop and operate digital products, including Wholy, and provide AI consulting, web and mobile development services." data-tr="NEO Coding Hub, NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ’nin ürün ve teknoloji markasıdır. Wholy dahil dijital ürünler geliştirip işletir; yapay zekâ danışmanlığı, web ve mobil uygulama geliştirme hizmetleri sunar.">NEO Coding Hub is the product and technology brand of NEO BİLİŞİM TEKNOLOJİLERİ VE MEDYA YAPIM ANONİM ŞİRKETİ. We develop and operate digital products, including Wholy, and provide AI consulting, web and mobile development services.</p>
-                    <p data-en="With successful partnerships including TÜBİTAK-funded projects with Glov, we've demonstrated our capability to tackle complex challenges in artificial intelligence and deliver innovative solutions that drive business growth."
-                        data-tr="Glov ile TÜBİTAK destekli projeler dahil olmak üzere başarılı ortaklıklarımızla, yapay zeka alanındaki karmaşık zorlukların üstesinden gelme ve iş büyümesini sağlayan yenilikçi çözümler sunma yeteneğimizi kanıtladık.">
-                        With successful partnerships including TÜBİTAK-funded projects with Glov, we've demonstrated our
-                        capability to tackle complex challenges in artificial intelligence and deliver innovative
-                        solutions that drive business growth.
-                    </p>
-                </div>
-                <div class="expertise-grid">
-                    <div class="expertise-card">
-                        <div class="expertise-icon">🤖</div>
-                        <h3 data-en="Artificial Intelligence" data-tr="Yapay Zeka">Artificial Intelligence</h3>
-                        <p data-en="Advanced AI solutions for complex problems"
-                            data-tr="Karmaşık problemler için gelişmiş AI çözümleri">Advanced AI solutions for complex
-                            problems</p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">📊</div>
-                        <h3 data-en="Machine Learning" data-tr="Makine Öğrenimi">Machine Learning</h3>
-                        <p data-en="Data-driven insights and predictive models"
-                            data-tr="Veri odaklı içgörüler ve tahmin modelleri">Data-driven insights and predictive
-                            models</p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">📱</div>
-                        <h3 data-en="Mobile Development" data-tr="Mobil Geliştirme">Mobile Development</h3>
-                        <p data-en="Cross-platform apps with native performance"
-                            data-tr="Yerel performanslı çapraz platform uygulamaları">Cross-platform apps with native
-                            performance</p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="expertise-icon">💡</div>
-                        <h3 data-en="Innovation Consulting" data-tr="İnovasyon Danışmanlığı">Innovation Consulting</h3>
-                        <p data-en="Strategic guidance for digital transformation"
-                            data-tr="Dijital dönüşüm için stratejik rehberlik">Strategic guidance for digital
-                            transformation</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- TÜBİTAK Partnership Section -->
     <section class="partnership">
